@@ -1,19 +1,45 @@
 # Agent Project Setup
 
-Stop re-explaining your repo to every coding agent.
+A Codex skill that prepares a repo for long-running agent-assisted development.
 
-Agent Project Setup is a Codex skill that creates a small working memory for software projects: current state, plans, decisions, and review rules. It is built for repos where agents write code over many sessions and need to continue work without guessing what happened last time.
+It gives agents a simple local system for project state, plans, decisions, verification, and PR/review follow-through, so each new session can continue from the last one instead of starting from scratch.
 
-## Why This Exists
+## Install
 
-Coding agents lose time in two predictable ways:
+```bash
+npx skills add https://github.com/bbssppllvv/agent-project-setup --skill agent-project-setup
+```
 
-- They rediscover the same project context every session.
-- They trust old notes that no longer match the code.
+Restart Codex after installing.
 
-This skill sets up a middle path. It gives agents enough local structure to plan, continue, verify, and archive work, while keeping code and tests as the source of truth.
+## Use
 
-## What It Adds
+Run this inside a project repo:
+
+```text
+Use $agent-project-setup to set up this repo for agent-assisted development.
+```
+
+The skill inspects the repo first. If it finds existing project instructions, plans, or docs, it reuses them instead of creating a second planning system. If the project goal or PR workflow is unclear, it asks before writing files.
+
+## The Problem
+
+Agent work breaks down when project memory lives only in chat history.
+
+A new session often has to rediscover:
+
+- what the project is;
+- what is being built next;
+- which plans are active, blocked, or finished;
+- what decisions were already made;
+- which checks must pass before work is considered done;
+- whether a change needs a branch, PR, review, or user approval.
+
+Without local structure, agents repeat planning work, miss old decisions, leave half-finished plans around, or archive work before review is complete.
+
+Agent Project Setup fixes that by putting the working memory in the repo.
+
+## What Gets Created
 
 ```text
 AGENTS.md
@@ -28,46 +54,42 @@ AGENTS.md
     archive/
 ```
 
-Each file has a job:
+## How It Works
 
-- `AGENTS.md` tells agents how to work in the repo.
-- `.agent/STATE.md` says what is happening now.
-- `.agent/DECISIONS.md` records durable decisions worth remembering.
-- `.agent/plans/` keeps many plans sorted by status.
+`AGENTS.md` tells future agents how to work in the repo: where to start, what commands matter, how plans move, and when to ask before risky actions.
 
-Plans stay active until implementation, verification, and required PR/code review are complete. Finished, abandoned, or superseded plans move to `archive/`.
+`.agent/STATE.md` is the handoff file. It records the current focus, active plans, blockers, next action, and recent meaningful changes.
 
-## What It Avoids
+`.agent/DECISIONS.md` stores durable decisions that should not be re-argued every session: architecture choices, providers, data model decisions, workflow rules, and similar project commitments.
 
-This skill does not create a large docs system by default.
+`.agent/plans/` is the planning system:
 
-No default research folder.  
-No default roadmap package.  
-No separate plan board to keep in sync.
+- `backlog/` for future plans and shaped ideas;
+- `active/` for work that is ready or in progress;
+- `blocked/` for plans waiting on a decision or dependency;
+- `archive/` for plans that are done, abandoned, or superseded.
 
-Optional folders are added only when the project actually needs them.
+Plans include goal, context, non-goals, scope, steps, verification, risks, rollback notes, and PR/review status.
 
-## Install
+## Plan Lifecycle
 
-```bash
-npx skills add https://github.com/bbssppllvv/agent-project-setup --skill agent-project-setup
-```
+1. New plans start in `backlog/` unless work should begin immediately.
+2. When work starts, the plan moves to `active/`.
+3. If progress is blocked, it moves to `blocked/` with the blocker written down.
+4. If a PR or code review is required, the plan stays `active` until review, merge, or explicit acceptance is complete.
+5. Finished, abandoned, or superseded plans move to `archive/`.
 
-Restart Codex after installing.
+This keeps old plans from pretending to be current work.
 
-## Use
+## What This Is Good For
 
-In a project repo, ask Codex:
+Use it when:
 
-```text
-Use $agent-project-setup to set up this repo for agent-assisted development.
-```
+- starting a new project with Codex;
+- turning an existing repo into something agents can work in repeatedly;
+- planning several features ahead;
+- keeping agent work reviewable through PRs;
+- preventing stale notes from becoming fake source of truth;
+- preserving decisions without writing a large documentation system.
 
-The skill will inspect the repo first. If it finds an existing planning system, it will reuse or point to it instead of creating a competing one. If the project goal or PR workflow is unclear, it will ask before writing structure.
-
-## Best For
-
-- new product repos;
-- side projects that will be built over many agent sessions;
-- existing repos where plans and decisions are scattered;
-- teams that want agents to update plans, wait for review, and archive finished work.
+The default setup is intentionally small. It adds the files agents need to continue work, and avoids creating extra docs until the project actually needs them.
