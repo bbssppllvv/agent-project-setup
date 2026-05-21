@@ -135,6 +135,7 @@ Allowed statuses:
 A good plan should be short but decision-ready. Include:
 
 - the user-visible or engineering outcome, not just the implementation idea;
+- a stable North Star describing the ideal product/user state if the plan succeeds;
 - non-goals that prevent scope creep;
 - acceptance criteria that state what must be true when the work is done;
 - references to current code/docs/plans that matter;
@@ -144,6 +145,8 @@ A good plan should be short but decision-ready. Include:
 - PR/review expectations when the repo uses branches or reviews.
 
 Do not write speculative architecture documents disguised as plans. If the next agent cannot start implementation or make a clear decision from the plan, sharpen the plan or mark it `draft`.
+
+The North Star is not an implementation summary. Write it in product/user terms: what gets better, what the user can now do, what becomes simpler, safer, faster, clearer, or more reliable. Technical details can change during implementation; the North Star should still tell the agent what outcome to protect.
 
 ## Plan Hygiene
 

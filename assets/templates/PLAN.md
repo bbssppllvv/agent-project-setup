@@ -14,6 +14,10 @@ pr: ask
 
 {{GOAL}}
 
+## North Star
+
+{{NORTH_STAR_PRODUCT_OR_USER_OUTCOME}}
+
 ## Context
 
 {{CONTEXT}}
