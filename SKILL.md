@@ -5,7 +5,7 @@ description: >
   existing software projects: AGENTS.md, current project state, durable
   decisions, and a multi-plan system with active, backlog, blocked, and
   archived plans. Use when starting a new project, organizing an existing repo
-  for Codex or other coding agents, creating local planning structure, or
+  for coding agents, creating local planning structure, or
   cleaning up stale agent memory and plans.
 ---
 

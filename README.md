@@ -1,6 +1,6 @@
 # Agent Project Setup
 
-A Codex skill that prepares a repo for long-running agent-assisted development.
+An agent skill that prepares a repo for long-running agent-assisted development.
 
 It gives agents a simple local system for project state, plans, decisions, verification, and PR/review follow-through, so each new session can continue from the last one instead of starting from scratch.
 
@@ -10,7 +10,7 @@ It gives agents a simple local system for project state, plans, decisions, verif
 npx skills add https://github.com/bbssppllvv/agent-project-setup --skill agent-project-setup
 ```
 
-Restart Codex after installing.
+Restart your agent environment after installing so the new skill is loaded.
 
 ## Use
 
@@ -85,7 +85,7 @@ This keeps old plans from pretending to be current work.
 
 Use it when:
 
-- starting a new project with Codex;
+- starting a new project with coding agents;
 - turning an existing repo into something agents can work in repeatedly;
 - planning several features ahead;
 - keeping agent work reviewable through PRs;
