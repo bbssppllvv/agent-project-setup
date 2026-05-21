@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent Project Setup"
+  short_description: "Create lightweight project harnesses for agents"
+  default_prompt: "Use $agent-project-setup to set up a lightweight agent-ready project structure for this repo."
