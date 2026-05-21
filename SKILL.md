@@ -136,6 +136,7 @@ A good plan should be short but decision-ready. Include:
 
 - the user-visible or engineering outcome, not just the implementation idea;
 - a stable North Star describing the ideal product/user state if the plan succeeds;
+- a user/operator story for who benefits and what they can do;
 - non-goals that prevent scope creep;
 - acceptance criteria that state what must be true when the work is done;
 - references to current code/docs/plans that matter;
@@ -147,6 +148,8 @@ A good plan should be short but decision-ready. Include:
 Do not write speculative architecture documents disguised as plans. If the next agent cannot start implementation or make a clear decision from the plan, sharpen the plan or mark it `draft`.
 
 The North Star is not an implementation summary. Write it in product/user terms: what gets better, what the user can now do, what becomes simpler, safer, faster, clearer, or more reliable. Technical details can change during implementation; the North Star should still tell the agent what outcome to protect.
+
+The user/operator story should stay lightweight. For user-facing work, use "As a [user], I want [capability], so that [outcome]." For internal tools, infrastructure, or agent workflow changes, write the operator/agent equivalent. If there is truly no user or operator behavior, write `N/A` and explain why.
 
 ## Plan Hygiene
 

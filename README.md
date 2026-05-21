@@ -69,7 +69,7 @@ AGENTS.md
 - `blocked/` for plans waiting on a decision or dependency;
 - `archive/` for plans that are done, abandoned, or superseded.
 
-Plans include goal, context, non-goals, scope, steps, verification, risks, rollback notes, and PR/review status.
+Plans include goal, North Star, user/operator story, context, non-goals, acceptance criteria, scope, steps, verification, risks, rollback notes, and PR/review status.
 
 ## Plan Lifecycle
 

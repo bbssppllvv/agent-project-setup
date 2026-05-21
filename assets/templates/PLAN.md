@@ -18,6 +18,10 @@ pr: ask
 
 {{NORTH_STAR_PRODUCT_OR_USER_OUTCOME}}
 
+## User / Operator Story
+
+As a {{USER_OR_OPERATOR}}, I want {{CAPABILITY}}, so that {{OUTCOME}}.
+
 ## Context
 
 {{CONTEXT}}
