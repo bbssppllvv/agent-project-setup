@@ -37,7 +37,7 @@ Plans can be many. Project memory should stay small.
 - Prefer the existing repo conventions over this template when they are already clear and maintained.
 - Do not duplicate the same fact across files. Link instead.
 - Treat code, tests, package manifests, and current source files as source of truth. Harness files are working memory, not proof.
-- Before relying on an implementation claim in a harness file, verify it against current files.
+- Before relying on an implementation claim in an agent setup file, verify it against current files.
 - Create the minimal core first. Add optional folders only when there is real pressure.
 - Never overwrite existing `AGENTS.md`, plan files, or decision logs without reading them first.
 
@@ -210,7 +210,7 @@ When a PR is required:
 
 Ask a concise question when:
 - the project purpose or first useful outcome is unclear;
-- there are multiple plausible harness locations and adopting the wrong one would create a parallel system;
+- there are multiple plausible agent setup locations and adopting the wrong one would create a parallel system;
 - a plan requires a product/architecture decision the current docs do not settle;
 - the next action would push, publish, delete, migrate, spend money, or contact external systems;
 - review or PR expectations are unclear and the task is not obviously local-only.

@@ -67,7 +67,7 @@ Before non-trivial work:
 - Update `.agent/STATE.md` when current focus, blockers, active plan, or next action changes.
 - Update `.agent/DECISIONS.md` only for durable decisions between real alternatives.
 - Update this file only when commands, repo shape, conventions, or agent operating rules change.
-- Do not create new planning/docs systems unless the existing harness cannot hold the information cleanly.
+- Do not create new planning/docs systems unless the existing agent setup cannot hold the information cleanly.
 
 ## Stale Docs Policy
 
