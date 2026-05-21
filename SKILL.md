@@ -136,9 +136,10 @@ A good plan should be short but decision-ready. Include:
 
 - the user-visible or engineering outcome, not just the implementation idea;
 - non-goals that prevent scope creep;
+- acceptance criteria that state what must be true when the work is done;
 - references to current code/docs/plans that matter;
 - concrete steps that can be checked off;
-- verification commands or manual checks;
+- verification commands or manual checks for proving the acceptance criteria;
 - risk and rollback notes for non-trivial changes;
 - PR/review expectations when the repo uses branches or reviews.
 
@@ -198,6 +199,7 @@ Before pushing or opening a PR, ask the user when:
 When a PR is required:
 - keep the plan in `active/` while review is pending;
 - record branch/PR link or number in the plan;
+- write the PR summary/test plan from the plan's acceptance criteria and verification notes, not from memory;
 - address review feedback in the same plan;
 - archive the plan only after review is complete, merged, or explicitly accepted by the user.
 

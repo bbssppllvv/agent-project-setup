@@ -26,6 +26,10 @@ pr: ask
 
 - {{NON_GOAL}}
 
+## Acceptance Criteria
+
+- [ ] {{ACCEPTANCE_CRITERION}}
+
 ## Scope
 
 Expected files/areas:
@@ -45,6 +49,7 @@ Expected files/areas:
 PR required: ask
 
 - [ ] Branch/PR needed decision recorded.
+- [ ] PR summary/test plan written from Acceptance Criteria and Verification.
 - [ ] PR opened, if required.
 - [ ] Review feedback addressed, if required.
 - [ ] Review/merge/acceptance complete before archive.
