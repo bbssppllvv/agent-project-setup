@@ -40,18 +40,15 @@ The skill emphasizes:
 
 ## Install
 
-Install the skill from this GitHub repository with Codex's skill installer:
+Install the skill with one command:
 
 ```bash
-python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
-  --repo bbssppllvv/agent-project-setup \
-  --path . \
-  --name agent-project-setup
+npx skills add https://github.com/bbssppllvv/agent-project-setup --skill agent-project-setup
 ```
 
 Then restart Codex so the new skill is loaded.
 
-You can also ask Codex to install it:
+If `npx skills add` is unavailable in your Codex build, ask Codex to install it:
 
 ```text
 Use $skill-installer to install bbssppllvv/agent-project-setup from GitHub.
