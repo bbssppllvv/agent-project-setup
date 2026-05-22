@@ -98,6 +98,8 @@ Use it for:
 
 Keep it short. It should tell the next agent where to look, not retell the whole project.
 
+Use the lightweight template. Do not turn `STATE.md` into a changelog or roadmap.
+
 ### `.agent/DECISIONS.md`
 
 Durable decisions that should not be re-litigated every session.
@@ -109,6 +111,8 @@ Add an entry only when the work chose between real alternatives, such as:
 - workflow, release, or verification policy.
 
 Do not record every task completion here. Link to archived plans when useful.
+
+Use the lightweight entry format. Do not create separate ADR files unless the repo already uses ADRs or a decision needs more detail than a short entry can hold.
 
 ### `.agent/plans/`
 

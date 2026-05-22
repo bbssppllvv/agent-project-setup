@@ -4,6 +4,17 @@ This is a short log of durable project decisions. It is not a full changelog and
 
 Before relying on an old decision, verify the current source and active plans.
 
+## When To Update
+
+Add an entry only when the project chooses between real alternatives:
+
+- architecture or data model;
+- framework, dependency, provider, or service;
+- API contract or storage format;
+- release, review, verification, or agent workflow policy.
+
+Do not record routine task completion here.
+
 ## Format
 
 ```markdown
