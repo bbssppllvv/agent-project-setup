@@ -36,8 +36,9 @@ Plans can be many. Project memory should stay small.
 
 - Prefer the existing repo conventions over this template when they are already clear and maintained.
 - Do not duplicate the same fact across files. Link instead.
-- Treat code, tests, package manifests, and current source files as source of truth. Harness files are working memory, not proof.
+- Treat code, tests, package manifests, and current source files as source of truth. Agent setup files are working memory, not proof.
 - Before relying on an implementation claim in an agent setup file, verify it against current files.
+- Treat agent-managed memory outside the repo as advisory and potentially stale.
 - Create the minimal core first. Add optional folders only when there is real pressure.
 - Never overwrite existing `AGENTS.md`, plan files, or decision logs without reading them first.
 
@@ -228,6 +229,26 @@ Before the final response after non-trivial work, check whether to update:
 - `AGENTS.md` - only if commands, repo structure, conventions, or agent operating rules changed.
 
 If an agent setup file is wrong, fix it in the same change or mark it stale. Stale-but-authoritative docs are worse than missing docs.
+
+## Agent Memory Consolidation
+
+Many agents keep their own memory outside the repo. Treat that memory as a cache, not as authority.
+
+When visible or referenced:
+
+- use external agent memory only as a lead;
+- verify implementation claims against current source before acting;
+- do not copy stale or private agent memory into the repo;
+- consolidate only durable, verified project facts into the repo setup.
+
+Where to consolidate:
+
+- current work, blockers, and next action -> `.agent/STATE.md`;
+- durable decisions and rationale -> `.agent/DECISIONS.md`;
+- future or in-progress work -> `.agent/plans/...`;
+- agent operating rules, commands, or repo shape -> `AGENTS.md`.
+
+If memory conflicts with current code, prefer current code and update or ignore the memory. If the conflict matters for future agents, record the corrected fact in the appropriate repo file.
 
 ## Optional Extensions
 

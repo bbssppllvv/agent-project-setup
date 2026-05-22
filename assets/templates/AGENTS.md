@@ -69,6 +69,13 @@ Before non-trivial work:
 - Update this file only when commands, repo shape, conventions, or agent operating rules change.
 - Do not create new planning/docs systems unless the existing agent setup cannot hold the information cleanly.
 
+## Agent Memory
+
+- Treat agent-managed memory outside the repo as advisory and potentially stale.
+- Verify external memory against current source before acting on it.
+- Consolidate durable, verified facts into this repo instead of relying on private agent memory.
+- Use `.agent/STATE.md` for current work, `.agent/DECISIONS.md` for durable decisions, and `.agent/plans/` for future or in-progress work.
+
 ## Stale Docs Policy
 
 If a doc is wrong, fix it in the same change or mark it stale with a dated note. Do not let stale docs remain authoritative.
