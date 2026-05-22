@@ -1,8 +1,8 @@
 # Agent Project Setup
 
-An agent skill that prepares a repo for long-running agent-assisted development.
+Coding agents lose project context when memory lives only in chat history. Agent Project Setup adds a small repo-local working memory system so future agents can resume current work, follow plans, preserve decisions, and keep PR/review status visible.
 
-It gives agents a simple local system for project state, plans, decisions, verification, and PR/review follow-through, so each new session can continue from the last one instead of starting from scratch.
+It does not scaffold application code, install dependencies, configure devcontainers, or choose a tech stack. It prepares the repo for repeated agent work.
 
 ## Install
 
@@ -14,7 +14,7 @@ Restart your agent environment after installing so the new skill is loaded.
 
 ## Use
 
-Run this inside a project repo:
+Inside a project repo, ask an agent environment that supports skills:
 
 ```text
 Use $agent-project-setup to set up this repo for agent-assisted development.
@@ -22,24 +22,7 @@ Use $agent-project-setup to set up this repo for agent-assisted development.
 
 The skill inspects the repo first. If it finds existing project instructions, plans, or docs, it reuses them instead of creating a second planning system. If the project goal or PR workflow is unclear, it asks before writing files.
 
-## The Problem
-
-Agent work breaks down when project memory lives only in chat history.
-
-A new session often has to rediscover:
-
-- what the project is;
-- what is being built next;
-- which plans are active, blocked, or finished;
-- what decisions were already made;
-- which checks must pass before work is considered done;
-- whether a change needs a branch, PR, review, or user approval.
-
-Without local structure, agents repeat planning work, miss old decisions, leave half-finished plans around, or archive work before review is complete.
-
-Agent Project Setup fixes that by putting the working memory in the repo.
-
-## What Gets Created
+## What It Creates
 
 ```text
 AGENTS.md
@@ -54,42 +37,14 @@ AGENTS.md
     archive/
 ```
 
-## How It Works
+## How Agents Use It
 
-`AGENTS.md` tells future agents how to work in the repo: where to start, what commands matter, how plans move, and when to ask before risky actions.
+- `AGENTS.md` tells future agents where to start, which commands matter, and how to maintain the setup.
+- `.agent/STATE.md` keeps the current handoff short: active plans, blockers, next action, and recent meaningful changes.
+- `.agent/DECISIONS.md` records durable decisions so agents do not re-argue them every session.
+- `.agent/plans/` holds many plans with clear statuses: `backlog`, `active`, `blocked`, and `archive`.
+- Plans stay active while required PR, review, merge, or explicit acceptance is still pending.
 
-`.agent/STATE.md` is the handoff file. It records the current focus, active plans, blockers, next action, and recent meaningful changes.
+## Why It Helps
 
-`.agent/DECISIONS.md` stores durable decisions that should not be re-argued every session: architecture choices, providers, data model decisions, workflow rules, and similar project commitments.
-
-`.agent/plans/` is the planning system:
-
-- `backlog/` for future plans and shaped ideas;
-- `active/` for work that is ready or in progress;
-- `blocked/` for plans waiting on a decision or dependency;
-- `archive/` for plans that are done, abandoned, or superseded.
-
-Plans include goal, North Star, user/operator story, context, non-goals, acceptance criteria, scope, steps, verification, risks, rollback notes, and PR/review status.
-
-## Plan Lifecycle
-
-1. New plans start in `backlog/` unless work should begin immediately.
-2. When work starts, the plan moves to `active/`.
-3. If progress is blocked, it moves to `blocked/` with the blocker written down.
-4. If a PR or code review is required, the plan stays `active` until review, merge, or explicit acceptance is complete.
-5. Finished, abandoned, or superseded plans move to `archive/`.
-
-This keeps old plans from pretending to be current work.
-
-## What This Is Good For
-
-Use it when:
-
-- starting a new project with coding agents;
-- turning an existing repo into something agents can work in repeatedly;
-- planning several features ahead;
-- keeping agent work reviewable through PRs;
-- preventing stale notes from becoming fake source of truth;
-- preserving decisions without writing a large documentation system.
-
-The default setup is intentionally small. It adds the files agents need to continue work, and avoids creating extra docs until the project actually needs them.
+Use it for repos where agents work across multiple sessions, features, or PRs. It keeps current state and decisions in version-controlled files, while avoiding a large documentation system that will go stale.

@@ -15,6 +15,8 @@ Add an entry only when the project chooses between real alternatives:
 
 Do not record routine task completion here.
 
+When adding or changing a decision, scan related older entries. If one is replaced, set it to `superseded`, add the replacement/date, and link the active plan, PR, or commit when available.
+
 ## Format
 
 ```markdown

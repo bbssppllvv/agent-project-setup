@@ -41,6 +41,8 @@ Before non-trivial work:
 - Verify with the most relevant command or manual check before handing off.
 - If verification is blocked, record the blocker and artifact paths if any.
 - Ask before pushing, publishing, deleting, migrating data, spending money, or opening a PR when the repo convention is unclear.
+- Do not store secrets, credentials, private user data, or permission policy in `.agent/*`.
+- Treat edits to this file as behavior changes for future agents.
 
 ## Plan Hygiene
 
@@ -50,6 +52,8 @@ Before non-trivial work:
 - Move blocked plans to `.agent/plans/blocked/`, set `status: blocked`, and write the blocker.
 - Move finished, abandoned, or superseded plans to `.agent/plans/archive/`.
 - Keep the plan folder and frontmatter `status` in sync.
+- Keep `.agent/plans/TEMPLATE.md` as a template only; it is exempt from status/folder matching.
+- Keep `draft` plans in `backlog/` until they are ready or started.
 - Keep plans `active` while required PR/code review work is pending.
 - Update `.agent/STATE.md` before handing off non-trivial work.
 
@@ -65,7 +69,8 @@ Before non-trivial work:
 - Code and tests are the source of truth. Treat `.agent/*` as working memory, not proof.
 - Before relying on a documented implementation claim, verify it against current source.
 - Update `.agent/STATE.md` when current focus, blockers, active plan, or next action changes.
-- Update `.agent/DECISIONS.md` only for durable decisions between real alternatives.
+- Keep `.agent/STATE.md` short: current handoff plus at most the last 3 meaningful changes.
+- Update `.agent/DECISIONS.md` only for durable decisions between real alternatives; mark replaced decisions `superseded`.
 - Update this file only when commands, repo shape, conventions, or agent operating rules change.
 - Do not create new planning/docs systems unless the existing agent setup cannot hold the information cleanly.
 
@@ -73,9 +78,16 @@ Before non-trivial work:
 
 - Treat agent-managed memory outside the repo as advisory and potentially stale.
 - Verify external memory against current source before acting on it.
-- Consolidate durable, verified facts into this repo instead of relying on private agent memory.
+- Consolidate only operating rules, commands, repo shape, durable decisions, active plans, blockers, and next actions.
+- Do not copy implementation summaries into memory files; link to source files, tests, plans, or PRs instead.
 - Use `.agent/STATE.md` for current work, `.agent/DECISIONS.md` for durable decisions, and `.agent/plans/` for future or in-progress work.
 
 ## Stale Docs Policy
 
-If a doc is wrong, fix it in the same change or mark it stale with a dated note. Do not let stale docs remain authoritative.
+If a doc is wrong, fix it in the same change or mark it stale with a dated note:
+
+```text
+STALE as of YYYY-MM-DD: reason. Source of truth: path/link.
+```
+
+Remove or replace stale notes once corrected. Do not let stale docs remain authoritative.

@@ -6,7 +6,8 @@ description: >
   decisions, and a multi-plan system with active, backlog, blocked, and
   archived plans. Use when starting a new project, organizing an existing repo
   for coding agents, creating local planning structure, or
-  cleaning up stale agent memory and plans.
+  cleaning up stale agent memory and plans. This skill does not scaffold app
+  code, install tools, configure devcontainers, or create technology templates.
 ---
 
 # Agent Project Setup
@@ -41,6 +42,8 @@ Plans can be many. Project memory should stay small.
 - Treat agent-managed memory outside the repo as advisory and potentially stale.
 - Create the minimal core first. Add optional folders only when there is real pressure.
 - Never overwrite existing `AGENTS.md`, plan files, or decision logs without reading them first.
+- Do not store secrets, credentials, private user data, or access policies in `.agent/*`.
+- Treat changes to `AGENTS.md` like code review material because they affect future agent behavior.
 
 ## Startup Workflow
 
@@ -53,7 +56,7 @@ Plans can be many. Project memory should stay small.
    - Copy `assets/templates/AGENTS.md` to `AGENTS.md`.
    - Copy `assets/templates/STATE.md` to `.agent/STATE.md`.
    - Copy `assets/templates/DECISIONS.md` to `.agent/DECISIONS.md`.
-   - Copy `assets/templates/PLAN.md` to `.agent/plans/TEMPLATE.md`.
+   - Copy `assets/templates/PLAN.md` to `.agent/plans/TEMPLATE.md`; this is a reusable template, not a real plan.
    - Create `.agent/plans/{active,backlog,blocked,archive}/`.
 4. If an agent project setup exists, update it in place. Do not create parallel systems.
 5. If the repo already has `docs/plans`, `docs/decisions`, or similar, either adopt that location or add a short pointer from `.agent/STATE.md`; avoid competing plan roots.
@@ -124,10 +127,10 @@ Directories:
 - `blocked/` - plans waiting on a decision or dependency.
 - `archive/` - completed, abandoned, or superseded plans.
 
-The folder and frontmatter status must agree.
+The folder and frontmatter status must agree for real plans. `.agent/plans/TEMPLATE.md` is exempt.
 
 Allowed statuses:
-- `draft` - rough idea, not ready.
+- `draft` - rough idea, kept in `backlog/` until ready.
 - `backlog` - ready future work.
 - `active` - currently executable, including implementation and PR/review follow-through.
 - `blocked` - cannot proceed without something.
@@ -151,6 +154,8 @@ A good plan should be short but decision-ready. Include:
 - PR/review expectations when the repo uses branches or reviews.
 
 Do not write speculative architecture documents disguised as plans. If the next agent cannot start implementation or make a clear decision from the plan, sharpen the plan or mark it `draft`.
+
+For small local tasks, do not force a full plan. It is acceptable to update only `.agent/STATE.md`, or to keep a short plan with just goal, acceptance criteria, steps, verification, and next action. Delete irrelevant template sections instead of filling them with noise.
 
 The North Star is not an implementation summary. Write it in product/user terms: what gets better, what the user can now do, what becomes simpler, safer, faster, clearer, or more reliable. Technical details can change during implementation; the North Star should still tell the agent what outcome to protect.
 
@@ -182,6 +187,7 @@ When finished:
 - move it to `archive/`, normally as `.agent/plans/archive/YYYY-MM-DD-<slug>.md`;
 - update `.agent/STATE.md`;
 - add to `.agent/DECISIONS.md` only if a durable decision was made.
+- when adding or changing a durable decision, scan related older decisions and mark replaced ones `superseded`.
 
 When obsolete:
 - set `status: superseded` or `abandoned`;
@@ -243,7 +249,8 @@ When visible or referenced:
 - use external agent memory only as a lead;
 - verify implementation claims against current source before acting;
 - do not copy stale or private agent memory into the repo;
-- consolidate only durable, verified project facts into the repo setup.
+- consolidate only operating rules, commands, repo shape, durable decisions, active plans, blockers, and next actions.
+- avoid copying implementation summaries into memory files; source files and tests should remain the proof.
 
 Where to consolidate:
 

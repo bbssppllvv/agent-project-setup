@@ -5,7 +5,6 @@ priority: P2
 created: {{YYYY-MM-DD}}
 updated: {{YYYY-MM-DD}}
 owner: agent
-pr: ask
 ---
 
 # {{TITLE}}
@@ -54,7 +53,11 @@ Expected files/areas:
 
 ## PR / Review
 
-PR required: ask
+Required: ask
+Branch: TBD
+PR: TBD
+Review status: not started
+Accepted/merged: no
 
 - [ ] Branch/PR needed decision recorded.
 - [ ] PR summary/test plan written from Acceptance Criteria and Verification.
@@ -70,15 +73,16 @@ PR required: ask
 ## Progress Log
 
 - {{YYYY-MM-DD}}: Plan created.
+- {{YYYY-MM-DD}}: Status changed {{FROM}} -> {{TO}}. Reason/next step: {{NOTE}}.
 
-## Decisions / Links
+## Related Decisions / Follow-ups
 
-- None yet.
+- Link related `.agent/DECISIONS.md` entries or follow-up plans here. Do not restate durable decisions.
 
 ## Blockers
 
 - None known.
 
-## Handoff
+## Next Plan Action
 
-Next agent should start by reading this plan and `.agent/STATE.md`.
+{{NEXT_PLAN_ACTION}}
